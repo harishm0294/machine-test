@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Test</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <section class="input-wrappper">
+            <div class="row">
+                <h3 class="input-head text-center">Inputs</h3>
+                <div class="inp-block col-md-4">
+                    <h6 class="sub-head">1. Add the volume of the buckets</h6>
+                    <ol type="A" id="bucketVolumeWrapper">
+                        <li><input type="number" min="1" id="bucketA"><span>cubic inches</span></li>
+                        <li><input type="number" min="1" id="bucketB"><span>cubic inches</span></li>
+                        <li><input type="number" min="1" id="bucketC"><span>cubic inches</span></li>
+                        <li><input type="number" min="1" id="bucketD"><span>cubic inches</span></li>
+                        <li><input type="number" min="1" id="bucketE"><span>cubic inches</span></li>
+                    </ol>
+                </div>
+                <div class="inp-block col-md-4">
+                    <h6 class="sub-head">2. Add the volume of the balls</h6>
+                    <ol type="A" id="ballVolumeWrapper">
+                        <li><span class="ball-text">Pink</span><input type="number" min="1" step="any" id="pinkVolume"><span>cubic inches</span></li>
+                        <li><span class="ball-text">Red</span><input type="number"  min="1" step="any" id="redVolume"><span>cubic inches</span></li>
+                        <li><span class="ball-text">Blue</span><input type="number"  min="1" step="any" id="blueVolume"><span>cubic inches</span></li>
+                        <li><span class="ball-text">Orange</span><input type="number"  min="1" step="any" id="orangeVolume"><span>cubic inches</span></li>
+                        <li><span class="ball-text">Green</span><input type="number"  min="1" step="any" id="greenVolume"><span>cubic inches</span></li>
+                    </ol>
+                </div>
+                <div class="inp-block col-md-4">
+                    <h6 class="sub-head">3. Input the number of each colored<br/>ball to be placed inside the buckets:</h6>
+
+                    <ol type="A" id="quantityWrapper">
+                        <li><span class="ball-text">Pink</span><input type="number"  min="0" id="pinkQty"><span>Balls</span></li>
+                        <li><span class="ball-text">Red</span><input type="number"  min="0" id="redQty"><span>Balls</span></li>
+                        <li><span class="ball-text">Blue</span><input type="number"  min="0" id="blueQty"><span>Balls</span></li>
+                        <li><span class="ball-text">Orange</span><input type="number"  min="0" id="orangeQty"><span>Balls</span></li>
+                        <li><span class="ball-text">Green</span><input type="number"  min="0" id="greenQty"><span>Balls</span></li>
+                    </ol>
+                </div>
+
+                <button id="suggestion" class="btn btn-dark mt-4 custom-btn">Suggestion</button>
+                <button id="clearAll" class="btn btn-dark mt-4 ms-3 custom-btn">Clear All</button>
+            </div>
+        </section>
+
+        <section class="output-wrapper mt-5">
+            <h3 class="text-center">Output (Suggestions)</h3>
+            <div class="row">
+                <div class="inp-block col-md-6">
+                    <h6 class="sub-head">Suggestions</h6>
+                    
+                    <ul type="1" id="suggestionBlock"></ul>
+                </div>
+                <div class="inp-block col-md-6">
+                    <h6 class="sub-head">Bucket Empty Volume</h6>
+
+                    <ul id="emptyVolumeBlock"></ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/notify.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
