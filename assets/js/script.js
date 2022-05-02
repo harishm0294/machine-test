@@ -121,14 +121,34 @@ $(function() {
         }
 
         // Logic for Get suggestions
-        let bucketData = {};
+        let bucketData1 = {};
         let ballVolData = {};
         let ballQtyData = {};
         let bucketBallCountData = {};
 
         $("#bucketVolumeWrapper :input").each(function() {
             let key = $(this).attr('id');
-            bucketData[key] = inputData[key];
+            bucketData1[key] = inputData[key];
+        });
+
+        // Sorting Bucket Data Object
+        let sortable = [];
+
+        for (let sortBucketKey in bucketData1) {
+            sortable.push([sortBucketKey, bucketData1[sortBucketKey]]);
+        }
+
+        sortable.sort(function(a, b) {
+            return a[1] - b[1];
+        });
+
+        sortable.reverse();
+
+        let bucketData = {};
+        sortable.forEach((val, index)=>{
+            let key = val[0];
+            let value = val[1];
+            bucketData[key] = value;
         });
 
         $("#ballVolumeWrapper :input").each(function() {
@@ -153,7 +173,7 @@ $(function() {
                 let vol = ballVolData[ballKey];
 
                 for (let i = 0; i < ballQtyData[ballKey]; i++) {
-                    if ((emptyValData[buketKey] - vol) > 0) {
+                    if ((emptyValData[buketKey] - vol) >= 0) {
                         bucketBallCount = bucketBallCount + 1;
                         emptyValData[buketKey] = emptyValData[buketKey] - vol;
                         qty--;
@@ -224,6 +244,7 @@ function showOutputData() {
                 bucketA ='';
             }
         }
+        
         if (Object.keys(suggestData.bucketB).length > 0) {
             let isNotEmpty = false;
             bucketB = `<li>Bucket B: Place`;
@@ -239,6 +260,7 @@ function showOutputData() {
                 bucketB ='';
             }
         }
+
         if (Object.keys(suggestData.bucketC).length > 0) {
             let isNotEmpty = false;
             bucketC = `<li>Bucket C: Place`;
@@ -282,7 +304,7 @@ function showOutputData() {
                     isNotEmpty = true;
                 }
             }
-
+            
             bucketE +=`</li>`;
 
             if(!isNotEmpty) {
@@ -290,7 +312,27 @@ function showOutputData() {
             }
         }
         
-        suggestionHtml += `${bucketA}${bucketB}${bucketC}${bucketD}${bucketE}`;
+        //Sorting Data
+        let sortableArr = [
+            ['bucketA', inputData.bucketA, bucketA],
+            ['bucketB', inputData.bucketB, bucketB],
+            ['bucketC', inputData.bucketC, bucketC],
+            ['bucketD', inputData.bucketD, bucketD],
+            ['bucketE', inputData.bucketE, bucketE],
+        ];
+
+        sortableArr.sort(function(a, b) {
+            return a[1] - b[1];
+        });
+
+        sortableArr.reverse();
+        
+        sortableArr.forEach((val, index)=>{
+            let data = val[2];
+            if(data.length > 0) {
+                suggestionHtml += `${data}`;
+            }
+        });
         suggestionHtml +=`<hr/>`;
     }
     
